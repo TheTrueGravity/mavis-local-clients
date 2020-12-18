@@ -1,0 +1,23 @@
+{
+  "name": "mavis-local-clients",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheTrueGravity/mavis-local-clients.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheTrueGravity/mavis-local-clients/issues"
+  },
+  "homepage": "https://github.com/TheTrueGravity/mavis-local-clients#readme",
+  "dependencies": {
+    "keygenerator": "^1.0.4",
+    "mavis-utils": "^1.1.3"
+  }
+}
