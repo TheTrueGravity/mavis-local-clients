@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/TheTrueGravity/mavis-local-clients#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "keygenerator": "^1.0.4",
     "mavis-utils": "^1.1.3"
   }

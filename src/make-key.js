@@ -5,7 +5,8 @@ var os = require('os');
 var ifaces = os.networkInterfaces();
 
 var hostname = null
-var port = 6767
+var communication_port = 6767
+var verification_port = 10245
 
 Object.keys(ifaces).forEach(function (ifname) {
   var alias = 0;
@@ -30,23 +31,27 @@ Object.keys(ifaces).forEach(function (ifname) {
 const pre_json = {
     "server_info": {
         "hostname": hostname,
-        "port": port
+        "communication_port": communication_port,
+        "verification_port": verification_port
     }
 }
 
-var create_json = function(friendlyname, hostname) {
+const default_permisions = {
+  admin: false,
+  create_user: false,
+  read_data: true,
+  write_data:false
+}
+
+var create_json = function(friendlyname, permisions=default_permisions) {
     var json = {}
     var key = keygen._()
     json.server_info = pre_json.server_info
     json.client_info = {
         "friendly_name": friendlyname,
-        "hostname": hostname,
         "key": key
     }
-    keys[key] = {
-        "friendly_name": friendlyname,
-        "hostname": hostname
-    }
+    keys[friendlyname] = key
     fs.writeFileSync('./src/keys.json', JSON.stringify(keys))
     return json
 }
