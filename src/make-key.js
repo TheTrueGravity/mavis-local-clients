@@ -51,7 +51,10 @@ var create_json = function(friendlyname, permisions=default_permisions) {
         "friendly_name": friendlyname,
         "key": key
     }
-    keys[friendlyname] = key
+    keys[friendlyname] = {
+        key: key,
+        permisions: permisions
+    }
     fs.writeFileSync('./src/keys.json', JSON.stringify(keys))
     return json
 }
