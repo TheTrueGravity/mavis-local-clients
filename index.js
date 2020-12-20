@@ -7,13 +7,16 @@ for (var user in keys) {
 }
 
 module.exports = {
-    communication_server: function (port=6767) {
+    communication_server: function (port=6767, data_callback = () => {}) {
         this.packets = new collections();
         this.packets.set('test_packet', {packet: 'Test packet recieved!'});
         this.packets.set('get_users', {packet: 'Get users packet recieved!', data: users});
 
         this.com_ser = require('./src/communication-server')((data) => {
             console.log(`Packet recieved! ${data.packet}`)
+            if (data_callback) {
+                return data_callback(packet)
+            }
             for (var packet in this.packets.array_value_names) {
                 if (data.packet == packet) {
                     return (this.packets.get(packet))
