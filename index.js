@@ -1,4 +1,5 @@
 const collections = require('./src/collections');
+var make_key = require('./src/make-key')
 const keys = require('./src/keys.json');
 var users = []
 for (var user in keys) {
@@ -22,5 +23,6 @@ module.exports = {
                 error: "Unknown packet!"
             })
         }, port)
-    }
+    },
+    make_key: make_key
 }
